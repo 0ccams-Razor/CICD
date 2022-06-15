@@ -3,11 +3,11 @@ name: Continuoous Intergration and Deployment
 on:
   push:
     branches:
-      -main
+      - main
 
 jobs:
   build:
-    runson: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Check out code
         uses: actions/checkouts@v2
