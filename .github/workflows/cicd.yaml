@@ -1,4 +1,4 @@
-name: Continuoous Intergration and Deployment
+name: Continuous Intergration and Deployment
 
 on:
   push:
@@ -25,6 +25,7 @@ jobs:
 
       - name: Run Automated Tests
         run: dotnet test -c Release --no-build
+        working-directory: ./AnimalCountingDatabase.test
         
         
 
