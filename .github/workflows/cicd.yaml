@@ -25,7 +25,6 @@ jobs:
 
       - name: Run Automated Tests
         run: dotnet test -c Release --no-build
-        working-directory: ./AnimalCountingDatabase.test
         
         
 
