@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -23,7 +24,10 @@ namespace AnimalCountingDatabase
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddRazorPages();
+            services.AddDbContext<CustomerContext>(options => options.UseSqlServer(
+                Configuration["ConnectionStrings:DefaultConnection"]));
+            services.AddControllers();
+           // services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,7 +53,8 @@ namespace AnimalCountingDatabase
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapRazorPages();
+                //0 endpoints.MapRazorPages();
+                endpoints.MapControllers();
             });
         }
     }
