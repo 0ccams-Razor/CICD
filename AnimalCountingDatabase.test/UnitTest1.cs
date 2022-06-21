@@ -20,7 +20,10 @@ namespace AnimalCountingDatabase.test
         public async Task CustomerIntergrationTest()
         {
             //Create DB Context
-            var configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build(); ;
+            var configuration = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json")
+                .AddEnvironmentVariables()
+                .Build();
 
             var optionsBuilder = new DbContextOptionsBuilder<CustomerContext>();
             optionsBuilder.UseSqlServer(configuration["ConnectionStrings:DefaultConnection"]);
